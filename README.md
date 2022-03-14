@@ -30,5 +30,5 @@ Password: `admin`
 ## Notes:
 
 This application was made using: 
--[Asp.Net](https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet) for Backend and,
--[React](https://reactjs.org/) for Frontend.
+[Asp.Net](https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet) for Backend and,
+[React](https://reactjs.org/) for Frontend.
