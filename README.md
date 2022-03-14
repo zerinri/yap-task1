@@ -21,13 +21,14 @@ Step 6:
 - type command `npm install`,
 - and lastly type command `npm start`,
 
-Step 7: You will be presented by the login screen on "http://localhost:3000/"
+Step 7: You will be presented by the login screen on "http://localhost:3000/",
+
 Step 8 : For Credentials please type in:
 Username: `admin`
 Password: `admin`
 
 ## Notes:
 
-This application was made using:
--Asp.net for Backend and ,
--React.js for Frontend.
+This application was made using: 
+-[Asp.Net](https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet) for Backend and,
+-[React](https://reactjs.org/) for Frontend.
