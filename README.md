@@ -7,6 +7,7 @@ Step 1: Copy code of this github repository,
 Step 2: Open terminal in visual studio or visual studio code and type "git clone 'coppied code from the previous step'" ,
 
 Step 3: Right click on server folder and select open in terminal,
+
 Step 4:
 
 - type command in terminal `dotnet ef migrations add InitialMigration`,
