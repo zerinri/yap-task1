@@ -1,4 +1,4 @@
-using server.Models;
+using server.Entities;
 
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

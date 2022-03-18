@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Dtos.Ingredient;
-using server.Models;
+using server.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

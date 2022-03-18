@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace server.Models
+namespace server.Entities
 {
     public class User
     {

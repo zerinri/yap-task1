@@ -6470,9 +6470,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zerinri\\yap-task1\\server\\server.csproj",
-      "projectName": "server",
-      "projectPath": "C:\\Users\\zerinri\\yap-task1\\server\\server.csproj",
+      "projectUniqueName": "C:\\Users\\zerinri\\yap-task1\\server\\Server.Api.csproj",
+      "projectName": "Server.Api",
+      "projectPath": "C:\\Users\\zerinri\\yap-task1\\server\\Server.Api.csproj",
       "packagesPath": "C:\\Users\\zerinri\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\zerinri\\yap-task1\\server\\obj\\",
       "projectStyle": "PackageReference",

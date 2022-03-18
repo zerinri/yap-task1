@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using server.Dtos.Category;
-using server.Dtos.Ingredient;
-using server.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using server.Services;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace server.Controllers
@@ -14,23 +8,16 @@ namespace server.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryService _categoryService;
-        public CategoryController(CategoryService categoryService)
+        private readonly ICategoryService _categoryService;
+        public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-        [EnableCors("CORS")]
-        [HttpGet("GetRecipesFromCategory/{id}")]
-        public IActionResult GetCategoryData(int id)
+
+        [HttpGet("GetAllCategories/{limit}")]
+        public async Task<IActionResult> Get(int limit)
         {
-            var _response = _categoryService.GetCategoryData(id);
-            return Ok(_response);
-        }
-        [EnableCors("CORS")]
-        [HttpGet("GetAllCategories")]
-        public async Task<ActionResult<ServiceResponse<List<GetCategoryDto>>>> GetAllCategories()
-        {
-            return Ok(await _categoryService.GetAllCategories());
+            return Ok(await _categoryService.GetAllCategories(limit));
         }
 
     }

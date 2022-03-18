@@ -1,5 +1,5 @@
 ﻿using server.Dtos.Ingredient;
-using server.Models;
+using server.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

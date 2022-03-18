@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aYw05X2z0fimklRTGH8PNMz7VuBcUTIIR8aWElIu+R46KnLToZh9gevl+MXjQmwri10cqGc+Ad4Zx+w76DykqQ==",
+  "dgSpecHash": "f1ARoJlkXhWiD9rr2volNHaZlrl37MvNPOC97jMU0vfewnAdL+/33WKW5DgG2zaduxSQU6O1o8Xp1yfmOyjiXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zerinri\\yap-task1\\server\\server.csproj",
+  "projectFilePath": "C:\\Users\\zerinri\\yap-task1\\server\\Server.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zerinri\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\zerinri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

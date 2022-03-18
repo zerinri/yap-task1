@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace server.Migrations
+namespace Server.Api.Migrations
 {
     public partial class InitalMigration : Migration
     {
@@ -28,8 +28,8 @@ namespace server.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PurchaseQuantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitMeasure = table.Column<int>(type: "int", nullable: false),
-                    MinimalUnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    PurchaseUnitMeasure = table.Column<int>(type: "int", nullable: false),
+                    PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Recipe_Ingredients",
+                name: "RecipeIngredients",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -85,15 +85,15 @@ namespace server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipe_Ingredients", x => x.Id);
+                    table.PrimaryKey("PK_RecipeIngredients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Recipe_Ingredients_Ingredients_IngredientId",
+                        name: "FK_RecipeIngredients_Ingredients_IngredientId",
                         column: x => x.IngredientId,
                         principalTable: "Ingredients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Recipe_Ingredients_Recipes_RecipeId",
+                        name: "FK_RecipeIngredients_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
                         principalColumn: "Id",
@@ -108,40 +108,40 @@ namespace server.Migrations
                     { 1, "Breakfast" },
                     { 2, "Lunch" },
                     { 3, "Dinner" },
-                    { 5, "Brunch" },
-                    { 6, "Snack" },
-                    { 7, "Midnight snack" },
-                    { 9, "Healty snack" },
-                    { 10, "Dessert" }
+                    { 4, "Brunch" },
+                    { 5, "Snack" },
+                    { 6, "Midnight snack" },
+                    { 7, "Healty snack" },
+                    { 8, "Dessert" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Ingredients",
-                columns: new[] { "Id", "MinimalUnitPrice", "Name", "PurchaseQuantity", "UnitMeasure" },
+                columns: new[] { "Id", "Name", "PurchasePrice", "PurchaseQuantity", "PurchaseUnitMeasure" },
                 values: new object[,]
                 {
-                    { 1, 10m, "Flour", 1m, 0 },
-                    { 2, 4m, "Pepper", 10m, 1 },
-                    { 3, 7m, "Oil", 1m, 2 },
-                    { 4, 15m, "Cheese", 100m, 1 },
-                    { 5, 3m, "Sugar", 80m, 1 },
-                    { 6, 2m, "Salt", 70m, 1 },
-                    { 7, 20m, "Meat", 1m, 0 }
+                    { 1, "Flour", 10m, 1m, 0 },
+                    { 2, "Pepper", 4m, 10m, 1 },
+                    { 3, "Oil", 7m, 1m, 2 },
+                    { 4, "Cheese", 15m, 100m, 1 },
+                    { 5, "Sugar", 3m, 80m, 1 },
+                    { 6, "Salt", 2m, 70m, 1 },
+                    { 7, "Meat", 20m, 1m, 0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "PasswordHash", "PasswordSalt", "Username" },
-                values: new object[] { 1, new byte[] { 67, 232, 159, 144, 174, 141, 125, 51, 214, 138, 107, 5, 40, 96, 173, 80, 180, 129, 91, 187, 42, 2, 194, 160, 109, 88, 214, 137, 145, 107, 203, 25, 65, 150, 51, 151, 196, 24, 164, 91, 127, 121, 243, 54, 2, 223, 136, 39, 59, 12, 84, 251, 149, 49, 0, 138, 9, 117, 210, 25, 87, 192, 172, 138 }, new byte[] { 111, 89, 66, 68, 184, 155, 23, 4, 70, 53, 141, 124, 186, 136, 215, 209, 103, 86, 198, 165, 205, 232, 27, 71, 236, 15, 26, 232, 29, 109, 123, 213, 65, 138, 41, 196, 168, 190, 33, 28, 2, 157, 217, 212, 80, 101, 238, 148, 79, 32, 99, 45, 224, 91, 202, 81, 213, 184, 128, 68, 145, 213, 111, 87, 243, 155, 136, 204, 210, 140, 113, 140, 84, 54, 64, 156, 48, 142, 126, 32, 38, 111, 122, 9, 68, 136, 57, 20, 179, 119, 174, 3, 234, 167, 224, 219, 16, 228, 186, 215, 118, 172, 20, 41, 3, 243, 173, 154, 55, 15, 180, 227, 76, 125, 91, 238, 253, 118, 27, 82, 149, 155, 82, 220, 117, 164, 96, 7 }, "user" });
+                values: new object[] { 1, new byte[] { 126, 18, 131, 218, 222, 89, 224, 20, 191, 82, 66, 167, 114, 90, 23, 56, 250, 56, 2, 160, 167, 204, 116, 75, 136, 123, 176, 226, 173, 113, 171, 50, 243, 101, 204, 115, 1, 87, 251, 132, 229, 202, 34, 188, 251, 127, 169, 51, 32, 144, 88, 208, 170, 14, 162, 182, 241, 188, 0, 104, 152, 179, 90, 99 }, new byte[] { 208, 111, 23, 193, 231, 240, 166, 150, 55, 23, 79, 141, 99, 76, 99, 194, 107, 141, 186, 136, 241, 87, 22, 44, 211, 68, 105, 118, 217, 80, 209, 126, 218, 0, 179, 232, 189, 31, 245, 66, 81, 122, 78, 150, 114, 224, 198, 146, 171, 242, 159, 101, 86, 8, 84, 135, 135, 163, 51, 32, 26, 138, 136, 200, 154, 109, 154, 208, 88, 137, 186, 241, 227, 85, 139, 4, 59, 33, 236, 124, 238, 103, 246, 48, 188, 85, 255, 175, 141, 195, 53, 84, 10, 52, 214, 28, 143, 208, 43, 38, 98, 66, 130, 103, 141, 185, 58, 117, 165, 152, 45, 84, 192, 181, 171, 161, 149, 38, 4, 96, 144, 140, 198, 24, 64, 37, 118, 166 }, "admin" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipe_Ingredients_IngredientId",
-                table: "Recipe_Ingredients",
+                name: "IX_RecipeIngredients_IngredientId",
+                table: "RecipeIngredients",
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipe_Ingredients_RecipeId",
-                table: "Recipe_Ingredients",
+                name: "IX_RecipeIngredients_RecipeId",
+                table: "RecipeIngredients",
                 column: "RecipeId");
 
             migrationBuilder.CreateIndex(
@@ -153,7 +153,7 @@ namespace server.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Recipe_Ingredients");
+                name: "RecipeIngredients");
 
             migrationBuilder.DropTable(
                 name: "Users");

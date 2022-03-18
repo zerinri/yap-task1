@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using server.Dtos.Ingredient;
-using server.Models;
+using server.Entities;
 using server.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using server.Models;
+using server.Entities;
 
 namespace server.Data
 {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using server.Data;
 
-namespace server.Migrations
+namespace Server.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("server.Models.Category", b =>
+            modelBuilder.Entity("server.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,48 +51,48 @@ namespace server.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 4,
                             Name = "Brunch"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             Name = "Snack"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 6,
                             Name = "Midnight snack"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 7,
                             Name = "Healty snack"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 8,
                             Name = "Dessert"
                         });
                 });
 
-            modelBuilder.Entity("server.Models.Ingredient", b =>
+            modelBuilder.Entity("server.Entities.Ingredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<decimal>("MinimalUnitPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PurchasePrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PurchaseQuantity")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UnitMeasure")
+                    b.Property<int>("PurchaseUnitMeasure")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -103,62 +103,62 @@ namespace server.Migrations
                         new
                         {
                             Id = 1,
-                            MinimalUnitPrice = 10m,
                             Name = "Flour",
+                            PurchasePrice = 10m,
                             PurchaseQuantity = 1m,
-                            UnitMeasure = 0
+                            PurchaseUnitMeasure = 0
                         },
                         new
                         {
                             Id = 2,
-                            MinimalUnitPrice = 4m,
                             Name = "Pepper",
+                            PurchasePrice = 4m,
                             PurchaseQuantity = 10m,
-                            UnitMeasure = 1
+                            PurchaseUnitMeasure = 1
                         },
                         new
                         {
                             Id = 3,
-                            MinimalUnitPrice = 7m,
                             Name = "Oil",
+                            PurchasePrice = 7m,
                             PurchaseQuantity = 1m,
-                            UnitMeasure = 2
+                            PurchaseUnitMeasure = 2
                         },
                         new
                         {
                             Id = 4,
-                            MinimalUnitPrice = 15m,
                             Name = "Cheese",
+                            PurchasePrice = 15m,
                             PurchaseQuantity = 100m,
-                            UnitMeasure = 1
+                            PurchaseUnitMeasure = 1
                         },
                         new
                         {
                             Id = 5,
-                            MinimalUnitPrice = 3m,
                             Name = "Sugar",
+                            PurchasePrice = 3m,
                             PurchaseQuantity = 80m,
-                            UnitMeasure = 1
+                            PurchaseUnitMeasure = 1
                         },
                         new
                         {
                             Id = 6,
-                            MinimalUnitPrice = 2m,
                             Name = "Salt",
+                            PurchasePrice = 2m,
                             PurchaseQuantity = 70m,
-                            UnitMeasure = 1
+                            PurchaseUnitMeasure = 1
                         },
                         new
                         {
                             Id = 7,
-                            MinimalUnitPrice = 20m,
                             Name = "Meat",
+                            PurchasePrice = 20m,
                             PurchaseQuantity = 1m,
-                            UnitMeasure = 0
+                            PurchaseUnitMeasure = 0
                         });
                 });
 
-            modelBuilder.Entity("server.Models.Recipe", b =>
+            modelBuilder.Entity("server.Entities.Recipe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,7 +181,7 @@ namespace server.Migrations
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("server.Models.Recipe_Ingredient", b =>
+            modelBuilder.Entity("server.Entities.RecipeIngredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -206,10 +206,10 @@ namespace server.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Recipe_Ingredients");
+                    b.ToTable("RecipeIngredients");
                 });
 
-            modelBuilder.Entity("server.Models.User", b =>
+            modelBuilder.Entity("server.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,15 +233,15 @@ namespace server.Migrations
                         new
                         {
                             Id = 1,
-                            PasswordHash = new byte[] { 67, 232, 159, 144, 174, 141, 125, 51, 214, 138, 107, 5, 40, 96, 173, 80, 180, 129, 91, 187, 42, 2, 194, 160, 109, 88, 214, 137, 145, 107, 203, 25, 65, 150, 51, 151, 196, 24, 164, 91, 127, 121, 243, 54, 2, 223, 136, 39, 59, 12, 84, 251, 149, 49, 0, 138, 9, 117, 210, 25, 87, 192, 172, 138 },
-                            PasswordSalt = new byte[] { 111, 89, 66, 68, 184, 155, 23, 4, 70, 53, 141, 124, 186, 136, 215, 209, 103, 86, 198, 165, 205, 232, 27, 71, 236, 15, 26, 232, 29, 109, 123, 213, 65, 138, 41, 196, 168, 190, 33, 28, 2, 157, 217, 212, 80, 101, 238, 148, 79, 32, 99, 45, 224, 91, 202, 81, 213, 184, 128, 68, 145, 213, 111, 87, 243, 155, 136, 204, 210, 140, 113, 140, 84, 54, 64, 156, 48, 142, 126, 32, 38, 111, 122, 9, 68, 136, 57, 20, 179, 119, 174, 3, 234, 167, 224, 219, 16, 228, 186, 215, 118, 172, 20, 41, 3, 243, 173, 154, 55, 15, 180, 227, 76, 125, 91, 238, 253, 118, 27, 82, 149, 155, 82, 220, 117, 164, 96, 7 },
-                            Username = "user"
+                            PasswordHash = new byte[] { 126, 18, 131, 218, 222, 89, 224, 20, 191, 82, 66, 167, 114, 90, 23, 56, 250, 56, 2, 160, 167, 204, 116, 75, 136, 123, 176, 226, 173, 113, 171, 50, 243, 101, 204, 115, 1, 87, 251, 132, 229, 202, 34, 188, 251, 127, 169, 51, 32, 144, 88, 208, 170, 14, 162, 182, 241, 188, 0, 104, 152, 179, 90, 99 },
+                            PasswordSalt = new byte[] { 208, 111, 23, 193, 231, 240, 166, 150, 55, 23, 79, 141, 99, 76, 99, 194, 107, 141, 186, 136, 241, 87, 22, 44, 211, 68, 105, 118, 217, 80, 209, 126, 218, 0, 179, 232, 189, 31, 245, 66, 81, 122, 78, 150, 114, 224, 198, 146, 171, 242, 159, 101, 86, 8, 84, 135, 135, 163, 51, 32, 26, 138, 136, 200, 154, 109, 154, 208, 88, 137, 186, 241, 227, 85, 139, 4, 59, 33, 236, 124, 238, 103, 246, 48, 188, 85, 255, 175, 141, 195, 53, 84, 10, 52, 214, 28, 143, 208, 43, 38, 98, 66, 130, 103, 141, 185, 58, 117, 165, 152, 45, 84, 192, 181, 171, 161, 149, 38, 4, 96, 144, 140, 198, 24, 64, 37, 118, 166 },
+                            Username = "admin"
                         });
                 });
 
-            modelBuilder.Entity("server.Models.Recipe", b =>
+            modelBuilder.Entity("server.Entities.Recipe", b =>
                 {
-                    b.HasOne("server.Models.Category", "Category")
+                    b.HasOne("server.Entities.Category", "Category")
                         .WithMany("Recipes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,16 +250,16 @@ namespace server.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("server.Models.Recipe_Ingredient", b =>
+            modelBuilder.Entity("server.Entities.RecipeIngredient", b =>
                 {
-                    b.HasOne("server.Models.Ingredient", "Ingredient")
-                        .WithMany("Recipe_Ingredients")
+                    b.HasOne("server.Entities.Ingredient", "Ingredient")
+                        .WithMany("RecipeIngredients")
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("server.Models.Recipe", "Recipe")
-                        .WithMany("Recipe_Ingredients")
+                    b.HasOne("server.Entities.Recipe", "Recipe")
+                        .WithMany("RecipeIngredients")
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -269,19 +269,19 @@ namespace server.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("server.Models.Category", b =>
+            modelBuilder.Entity("server.Entities.Category", b =>
                 {
                     b.Navigation("Recipes");
                 });
 
-            modelBuilder.Entity("server.Models.Ingredient", b =>
+            modelBuilder.Entity("server.Entities.Ingredient", b =>
                 {
-                    b.Navigation("Recipe_Ingredients");
+                    b.Navigation("RecipeIngredients");
                 });
 
-            modelBuilder.Entity("server.Models.Recipe", b =>
+            modelBuilder.Entity("server.Entities.Recipe", b =>
                 {
-                    b.Navigation("Recipe_Ingredients");
+                    b.Navigation("RecipeIngredients");
                 });
 #pragma warning restore 612, 618
         }

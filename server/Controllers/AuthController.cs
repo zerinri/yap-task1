@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
 using server.Data;
-using server.Models;
+using server.Entities;
 using Microsoft.AspNetCore.Mvc;
 using server.Dtos.User;
-using Microsoft.AspNetCore.Cors;
 
 namespace dotnet_course.Controllers
 {
@@ -31,7 +30,6 @@ namespace dotnet_course.Controllers
             return Ok(response);
         }
 
-        [EnableCors("CORS")]
         [HttpPost("Login")]
         public async Task<ActionResult<ServiceResponse<string>>> Login(UserLoginDto request)
         {
