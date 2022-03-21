@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using server.Dtos.Recipe;
-using server.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
 using server.Services;
-using System.Collections.Generic;
+using Server.Common.Entities;
+using Server.Core.Dtos.Recipe;
 using System.Threading.Tasks;
 
 namespace server.Controllers
@@ -24,7 +21,7 @@ namespace server.Controllers
         public IActionResult Post([FromBody] AddRecipeDto recipe)
         {
             _recipeService.AddRecipeWithIngredients(recipe);
-            return Ok();
+            return Ok(recipe);
         }
 
         [HttpGet("GetRecipeById/{id}")]

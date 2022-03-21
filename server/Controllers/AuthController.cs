@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
 using server.Data;
-using server.Entities;
 using Microsoft.AspNetCore.Mvc;
-using server.Dtos.User;
+using Server.Common.Entities;
+using Server.Core.Dtos.User;
+using Server.Core.Entities;
 
 namespace dotnet_course.Controllers
 {
