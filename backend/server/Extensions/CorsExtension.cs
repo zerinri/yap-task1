@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Server.Api.Extensions
+namespace NormativeApp.Api.Extensions
 {
     public static class CorsExtension
     {

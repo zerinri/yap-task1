@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Server.Api.Extensions
+namespace NormativeApp.Api.Extensions
 {
     public static class AuthenticationExtension
     {
@@ -22,7 +22,6 @@ namespace Server.Api.Extensions
                    };
                });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
         }
     }
 }

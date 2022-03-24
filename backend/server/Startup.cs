@@ -1,19 +1,13 @@
 using backend.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using server.Data;
-using server.Services;
-using Server.Api.Extensions;
-using Server.Database.Data;
+using NormativeApp.Api.Extensions;
+using NormativeApp.Mapper;
 
-namespace server
+namespace NormativeApp
 {
     public class Startup
     {
@@ -34,15 +28,9 @@ namespace server
 
             services.AddControllers();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(AutoMapperProfile));
 
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IIngredientService, IngredientService>();
-
-            services.AddTransient<RecipeService>();
-            services.AddTransient<IngredientService>();
-            services.AddTransient<CategoryService>();
+            services.SetupServiceRegistration();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using server.Data;
+using NormativeApp.Data;
 using Microsoft.AspNetCore.Mvc;
-using Server.Common.Entities;
-using Server.Core.Dtos.User;
-using Server.Core.Entities;
+using NormativeApp.Common.Entities;
+using NormativeApp.Core.Dtos.User;
+using NormativeApp.Core.Entities;
 
-namespace dotnet_course.Controllers
+namespace NormativeApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
